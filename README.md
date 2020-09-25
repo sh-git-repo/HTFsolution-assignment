@@ -3,12 +3,17 @@
 ## Table of contents
 * [Introduction](#introduction)
 * [Tutorial](#tutorial)
-* [Dependencies](#dependencies)
 * [Conclusion](#conclusion)
 
 ## Introduction
-#### Technologies used
-* The complete application was developed in Python 3.8.5
+#### Dependencies
+* The complete application was developed in Python 3.8.5, no external libraries used.
+
+#### Execution
+* Please execute the solution.py file as such,
+```
+$ python solution.py
+```
 
 ## Tutorial
 #### Main console

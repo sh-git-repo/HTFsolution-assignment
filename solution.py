@@ -41,7 +41,7 @@ def main():
             'Enter 1 for Market orders \n',
             'Enter 2 for Limit orders \n',
             'Enter 3 to cancel a particular order\n',
-            'Enter any other key to exit\n>> '
+            'Enter any other number to exit\n>> '
         ])
         condition = resolve(int(input(option_string)), order_book)
         os.system('cls')
