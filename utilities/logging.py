@@ -21,7 +21,7 @@ def logging(order_book):
     print('Warning, selecting any order to be cancelled will undo all the changes upto that order \n')
     logger = FetchLogger(CONFIG_PATH)
     display_logs(logger)
-    option = int(input('Enter the order number to be undone \n'))
+    option = int(input('Enter the order number to be undone \n>> '))
     status, bids, asks = logger.fetch_trades(option)
     if status:
         order_book.bids.pairs = bids

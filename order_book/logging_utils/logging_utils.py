@@ -58,12 +58,7 @@ class FetchLogger(Logger):
     def fetch_logs(self):
         '''
         '''
-        json_file_generator = (
-            ''.join([self.config_path, backup_name])\
-            for backup_name in os.listdir(self.config_path)\
-            if backup_name[-4:] == 'json'
-        )
-        return json_file_generator
+        return get_filenames(self.config_path, 'json')
 
     def fetch_trades(self, config_version):
         '''
@@ -80,3 +75,14 @@ class FetchLogger(Logger):
             return True, data['bids'], data['asks']
         except FileNotFoundError:
             return False, None, None
+
+def get_filenames(path, extension):
+    '''
+    '''
+    extension_len = len(extension)
+    file_path_generator = (
+        ''.join([path, file_name])\
+        for file_name in os.listdir(path)\
+        if file_name[-extension_len:] == extension
+    )
+    return file_path_generator
