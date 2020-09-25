@@ -57,12 +57,13 @@ class OrderBook():
     def buy_limit(self, quantity, limit):
         '''
         '''
+        dummy_lis = [pos for pos, pair in enumerate(bids_data) if pair[0]==limit]
         bids_data = self.bids.pairs
         asks_data = self.asks.pairs
         if limit >= min(asks_data)[0]:
             self.buy(quantity)
-        elif lis := [pos for pos, pair in enumerate(bids_data) if pair[0]==limit]:
-            pos = lis[0]
+        elif dummy_lis:
+            pos = dummy_lis[0]
             bids_data[pos][1] += quantity
         else:
             bids_data.insert(0, [limit, quantity])
