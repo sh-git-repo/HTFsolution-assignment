@@ -57,9 +57,9 @@ class OrderBook():
     def buy_limit(self, quantity, limit):
         '''
         '''
-        dummy_lis = [pos for pos, pair in enumerate(bids_data) if pair[0]==limit]
         bids_data = self.bids.pairs
         asks_data = self.asks.pairs
+        dummy_lis = [pos for pos, pair in enumerate(bids_data) if pair[0]==limit]
         if limit >= min(asks_data)[0]:
             self.buy(quantity)
         elif dummy_lis:
@@ -73,10 +73,11 @@ class OrderBook():
         '''
         bids_data = self.bids.pairs
         asks_data = self.asks.pairs
+        dummy_lis = [pos for pos, pair in enumerate(asks_data) if pair[0]==limit]
         if limit <= max(bids_data)[0]:
             self.sell(quantity)
-        elif lis := [pos for pos, pair in enumerate(asks_data) if pair[0]==limit]:
-            pos = lis[0]
+        elif dummy_lis:
+            pos = dummy_lis[0]
             asks_data[pos][1] += quantity
         else:
             asks_data.append([limit, quantity])
